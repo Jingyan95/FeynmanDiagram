@@ -1,0 +1,157 @@
+\documentclass[red]{beamer}
+\usetheme{CambridgeUS}
+%%\usecolortheme{beaver}
+\setbeamertemplate{headline}{}
+\setbeamercolor{title}{bg=red!65!black, fg=white}
+\setbeamertemplate{footline}{}
+\setbeamertemplate{footline}{% 
+  \hfill% 
+  \usebeamercolor[fg]{page number in head/foot}% 
+  \usebeamerfont{page number in head/foot}% 
+  \footnotesize\insertframenumber%
+  %\,/\,\inserttotalframenumber
+  \kern0.5em\vskip2pt% 
+}
+\setbeamertemplate{navigation symbols}{}
+\usepackage{advdate}
+\usepackage{upgreek}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{slashed}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{soul}
+\usepackage{tikz}
+\usetikzlibrary{external}
+\tikzexternalize % activate!
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usepackage{beamerfoils}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{blkarray}
+\usepackage{pgf}
+\usepackage{capt-of}
+\setbeamertemplate{caption}[numbered]
+\setbeamerfont{caption}{series=\normalfont,size=\fontsize{5}{6}} 
+\usepackage{appendixnumberbeamer}
+\MyLogo{
+%\pgfputat{\pgfxy(-1.3,1.9)}{\pgfbox[right,base]{\includegraphics[height=1.5cm]{CMS.png}}}
+%\pgfputat{\pgfxy(-9.5,1.7)}{\pgfbox[right,base]{\includegraphics[height=2.0cm]{NEU.png}}}
+}
+\begin{document}
+\title{LFV Update}
+%\author{~\\Bharadwaj Harikrishnan\textsuperscript{1}, \underline{Jack Li}\textsuperscript{1}, Ashley Parker\textsuperscript{1}, Louise Skinnari\textsuperscript{1}}
+\author{~\\Jack Li}
+%\institute[Northeastern University]{~\\~\\ \textsuperscript{1}Northeastern University\\ ~\\Top M$\&$P Meeting,  3 Nov, 2020}
+\institute[Northeastern University]{}
+%\date{\AdvanceDate[+0]\today}
+\date{}
+\begingroup
+\setbeamertemplate{footline}{}
+\frame{\titlepage}
+\endgroup
+\logo{} 
+
+\begin{frame}{ST1}
+
+\begin{tikzpicture} 
+\begin{feynman}
+   \vertex (a1) {\textbf{u/c}};
+   \vertex at ($(a1) + (0, -1.6cm)$) (a2) {\textbf{g}};
+   \vertex at ($(a1) + (1.5cm, -0.8cm)$) (a3);
+   \node[dot, scale=1.5, red] at ($(a3) + (1.2cm,0)$) (a4);
+   \vertex at ($(a4) + (1.2cm,1.4)$) (a5) {$\textbf{e}^{\bm{-}}$};
+   \vertex at ($(a4) + (1.2cm,-1.4)$) (a6) {$\bm{\upmu^{+}}$};
+   \vertex at ($(a4) + (1.2cm,0)$) (a7);
+   \vertex at ($(a7) + (0.9cm,0.533)$) (a8);
+   \vertex at ($(a7) + (1cm,-1)$) (a9) {\textbf{b}};
+      \vertex at ($(a8) + (1.3cm, 0.45cm)$) (a10) {$\bm{\nu_{\textbf{e}}}$};
+   \vertex at ($(a8) + (1.3cm, -0.45cm)$) (a11) {$\textbf{e}^{\bm{+}}$};
+   \diagram* [edges=double]{
+    (a1) -- [fermion, thick] (a3),
+    (a2) -- [gluon, thick] (a3),
+    (a3) -- [fermion, edge label'=\textbf{u/c}, thick] (a4),
+    (a4) -- [fermion, thick] (a5),
+    (a4) -- [anti fermion, thick] (a6),
+    (a4) -- [fermion, edge label'=\textbf{t}, thick] (a7),
+    (a7) -- [boson, edge label'=$\textbf{W}^{\bm{+}}$, thick] (a8),
+    (a7) -- [fermion, thick] (a9),
+    (a8) -- [fermion, thick] (a10),
+    (a8) -- [anti fermion, thick] (a11),
+    };
+\end{feynman}
+\end{tikzpicture}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{ST2}
+
+\begin{tikzpicture} 
+\begin{feynman}
+   \vertex (a1) {\textbf{u/c}};
+   \vertex[right=4.4cm of a1] (a2) {$\textbf{e}^{\bm{-}}$};
+   \vertex[below=1.5cm of a2] (a3) {$\bm{\upmu^{+}}$};
+   \node[dot, scale=1.5, red] at ($(a1)!0.5!(a2) - (0, 0.75cm)$) (a4);%dot
+   \vertex[below=1.3cm of a4] (a5);
+   \vertex[below=2.6cm of a1] (a6) {\textbf{g}};
+   \vertex at ($(a5) + (1.65cm, -0.5625cm)$) (a7);
+   \vertex at ($(a7) + (1.2cm, 0.42cm)$) (a8);
+   \vertex at ($(a7) + (0.3cm, -1cm)$) (a9) {\textbf{b}};
+   \vertex at ($(a8) + (1.3cm, 0.45cm)$) (a10) {$\bm{\nu_{\textbf{e}}}$};
+   \vertex at ($(a8) + (1.3cm, -0.45cm)$) (a11) {$\textbf{e}^{\bm{+}}$};
+   \diagram* [edges=double]{
+    (a1) -- [fermion, thick] (a4),
+    (a4) -- [fermion, thick] (a2),
+    (a4) -- [anti fermion, thick] (a3),
+    (a4) -- [fermion, edge label'=\textbf{t}, thick] (a5),
+    (a6) -- [gluon, thick] (a5),
+    (a5) -- [fermion, edge label'=\textbf{t}, thick] (a7),
+    (a7) -- [boson, edge label'=$\textbf{W}^{\bm{+}}$, thick] (a8),
+    (a7) -- [fermion, thick] (a9),
+    (a8) -- [fermion, thick] (a10),
+    (a8) -- [anti fermion, thick] (a11),
+    };
+\end{feynman}
+\end{tikzpicture}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{TT}
+
+\begin{tikzpicture} 
+\begin{feynman}
+   \vertex (a1) {\textbf{g}};
+   \vertex at ($(a1) + (0, -1cm)$) (a2) {\textbf{g}};
+   \vertex at ($(a1) + (1.5cm, -0.5cm)$) (a3);
+   \vertex at ($(a3) + (1.4cm,0)$) (a4);
+   \vertex at ($(a4) + (1.3cm,0.5)$) (a5);
+   \node[dot, scale=1.5, red] at ($(a4) + (1.3cm,-0.5)$) (a6);
+   \vertex at ($(a6) + (1.6cm, -0.6154cm)$) (a7) {\textbf{u/c}};
+   \vertex at ($(a6) + (1.6cm, 0cm)$) (a8) {$\bm{\textbf{e}^{\bm{-}}}$};
+   \vertex at ($(a6) + (1.2cm, -1.15cm)$) (a9) {$\bm{\upmu^{+}}$};
+   \vertex at ($(a5) + (1.1cm, 0)$) (a10);
+   \vertex at ($(a10) + (1.3cm, 0.45cm)$) (a11) {$\bm{\bar{\nu}_{\textbf{e}}}$};
+   \vertex at ($(a10) + (1.3cm, -0.45cm)$) (a12) {$\textbf{e}^{\bm{-}}$};
+   \vertex at ($(a5) + (0.8cm, 1.1cm)$) (a13) {$\bar{\textbf{b}}$};
+   \diagram* [edges=double]{
+    (a1) -- [gluon, thick] (a3),
+    (a2) -- [gluon, thick] (a3),
+    (a3) -- [gluon, edge label'=\textbf{g}, thick] (a4),
+    (a4) -- [anti fermion, , edge label=$\bar{\textbf{t}}$, thick] (a5),
+    (a4) -- [fermion, , edge label'=\textbf{t}, thick] (a6),
+    (a6) -- [fermion, thick] (a7),
+    (a6) -- [fermion, thick] (a8),
+    (a6) -- [anti fermion, thick] (a9),
+    (a5) -- [boson, edge label'=$\textbf{W}^{\bm{-}}$, thick] (a10),
+    (a10) -- [anti fermion, thick] (a11),
+    (a10) -- [fermion, thick] (a12),
+    (a5) -- [anti fermion, thick] (a13),
+    };
+\end{feynman}
+\end{tikzpicture}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
